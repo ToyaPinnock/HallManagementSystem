@@ -1,0 +1,2 @@
+[0508/193636.782:ERROR:node_debugger.cc(50)] Error parsing node options: [DEP0062]: `node --debug` and `node --debug-brk` are invalid. Please use `node --inspect` and `node --inspect-brk` instead.
+[0515/125923.880:ERROR:node_debugger.cc(50)] Error parsing node options: [DEP0062]: `node --debug` and `node --debug-brk` are invalid. Please use `node --inspect` and `node --inspect-brk` instead.
