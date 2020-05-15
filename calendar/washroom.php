@@ -1,3 +1,11 @@
+<?php
+session_start();
+require '../frontend/backend/classes.php';
+#echo "<script>console.log('From old home: " . $_SESSION['isLogged'] ."')</script>";
+if($_SESSION['isLogged'] === FALSE){
+  header('Location: index.php');
+}
+?>
 <html>
   <head>
     <meta charset="utf-8"/>
@@ -9,8 +17,8 @@
 	  padding: 0px 5px;
 	}
 	</style>
-	
-	
+
+
   </head>
   <body>
     <div id="content" style="top:60px; bottom:24px;">
