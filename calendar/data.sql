@@ -15,7 +15,7 @@ CREATE TABLE `data` (
   `Location` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `Resources` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `Details` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ID` text COLLATE utf8mb4_unicode_ci NOT NULL
+  `Subject` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 

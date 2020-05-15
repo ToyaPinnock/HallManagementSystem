@@ -100,7 +100,7 @@ if($_SESSION['isLogged'] === FALSE){
         <a href="give-feedback.php" class="function-card w-inline-block">
           <h3 class="white funcard">Give Feedback</h3>
         </a>
-        <a href="#" class="function-card w-inline-block">
+        <a href="../calendar/washroom.php" class="function-card w-inline-block">
           <h3 class="white funcard">Washroom Schedule</h3>
         </a>
       </div>
