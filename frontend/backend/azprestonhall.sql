@@ -209,6 +209,7 @@ CREATE TABLE `resident` (
   `cluster_name` varchar(20) NOT NULL,
   `household` varchar(1) NOT NULL,
   `room_num` varchar(4) DEFAULT NULL,
+
   PRIMARY KEY (`IDnum`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -219,7 +220,7 @@ CREATE TABLE `resident` (
 
 LOCK TABLES `resident` WRITE;
 /*!40000 ALTER TABLE `resident` DISABLE KEYS */;
-INSERT INTO `resident` VALUES ('620117676','Los Matadores','B','10B1'),('620117677','Los Matadores','B','10B1'),('620117678','Los Matadores','C','10C4'),('620117679','La Maison','A','20A4'),('620125555','Shamrock','D','50D4');
+INSERT INTO `resident` VALUES ('620117676','Los Matadores','B','10B1'),('620117677','Los Matadores','B','10B1');
 /*!40000 ALTER TABLE `resident` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

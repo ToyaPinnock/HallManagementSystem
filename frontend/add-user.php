@@ -47,7 +47,7 @@ if($_SESSION['isLogged'] === FALSE){
           <h5>Add User</h5>
           <div class="form w-form">
             <form id="email-form" name="email-form" data-name="Email Form" class="w-clearfix">
-                <label for="name">ID number</label> 
+                <label for="name">ID number</label>
                   <input type="text" class="w-input" maxlength="256" name="ID-number" data-name="ID number" placeholder="Enter user id number" id="ID-number" required="">
                 <label for="name">Cluster Name</label>
                   <select id="cluster" name="cluster" required="" data-name="cluster" class="w-select">
@@ -69,6 +69,7 @@ if($_SESSION['isLogged'] === FALSE){
                   <input type="text" class="w-input" maxlength="256" name="household" data-name="household" placeholder="Enter user household" id="household" required="">
                 <label for="Issue-description-2">Room Number</label>
                   <input type="text" class="w-input" maxlength="256" name="Issue-description" data-name="Issue description" placeholder="Enter user room number" id="Issue-description" required="">
+
               <h6>All Fields are Mandatory</h6><input id="add-user" type="submit" value="Submit" data-wait="Please wait..." class="btn-filled blue w-button"></form>
             <div class="w-form-done">
               <div>Thank you! Your submission has been received!</div>

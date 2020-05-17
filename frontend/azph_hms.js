@@ -1,8 +1,8 @@
-$(document).ready(function () {
-    $('#residentbtn').click(function () {
+$(document).ready(function() {
+    $('#residentbtn').click(function() {
         //console.log("button loaded");
         $('.log-in-card').hide();
-        $('.submit-button').click(function (event) {
+        $('.submit-button').click(function(event) {
             event.preventDefault();
             let resident_id = $('#name').val();
             let resident_password = $('#email').val();
@@ -13,46 +13,49 @@ $(document).ready(function () {
                     residentID: resident_id,
                     residentPass: resident_password
                 }
-            }).done(function (response) {
+            }).done(function(response) {
                 console.log(response);
                 console.log("came back");
                 if (response === "<script> alert('User not found');</script>") {
                     $('#alertbox').html(response);
                     $('.w-form-fail').show();
-                } if (response === "<script>alert('Logged in successfully!');</script>") {
+                }
+                if (response === "<script>alert('Logged in successfully!');</script>") {
                     $('#alertbox').html(response);
                     //window.location.replace("confirmation.php");
                     window.location.replace("confirmation.php");
-                } if (response === "<script>alert('Username or password incorrect!');</script>") {
+                }
+                if (response === "<script>alert('Username or password incorrect!');</script>") {
                     $('#alertbox').html(response);
                     $('.w-form-fail').show();
-                } /*else {
-                    //$('#alertbox').html(response);
-                    $('.w-form-fail').show();
-                }*/
-            }).fail(function () {
+                }
+                /*else {
+                                   //$('#alertbox').html(response);
+                                   $('.w-form-fail').show();
+                               }*/
+            }).fail(function() {
                 alert('Something went wrong with a request to the server');
             });
         });
     });
 
-    $('#continue-button').click(function () {
+    $('#continue-button').click(function() {
         window.location.replace("old-home.php");
     });
 
-    $('.sign-out').click(function () {
+    $('.sign-out').click(function() {
         window.location.replace("index.php");
     });
 
-    $('#log-issue').click(function () {
+    $('#log-issue').click(function() {
         window.location.replace("log-issue.php");
     });
 
-    $('#track-issue').click(function () {
+    $('#track-issue').click(function() {
         window.location.replace("track-issue.php");
     });
 
-    $('#track-issue-1').click(function (event) {
+    $('#track-issue-1').click(function(event) {
         event.preventDefault();
         let idnum = $('#track-idNum').val();
         //console.log(idnum);
@@ -61,10 +64,10 @@ $(document).ready(function () {
             data: {
                 IDnum: idnum
             }
-        }).done(function (response) {
+        }).done(function(response) {
             //alert(response);
             $('#show-issues-1').html(response);
-        }).fail(function () {
+        }).fail(function() {
             alert('Something went wrong with the server');
         });
     });
@@ -73,7 +76,7 @@ $(document).ready(function () {
         $('.w-nav-menu').show();
     });*/
 
-    $('#submit-issue').click(function (event) {
+    $('#submit-issue').click(function(event) {
         event.preventDefault();
         let clust = $('#cluster').val();
         let cat = $('#classification').val();
@@ -91,7 +94,7 @@ $(document).ready(function () {
                 classification: cat,
                 description: desc
             }
-        }).done(function (response) {
+        }).done(function(response) {
             console.log(response);
             if (response === "FAILED") {
                 $('.w-form-fail').show();
@@ -100,16 +103,16 @@ $(document).ready(function () {
                 //window.location.replace("../old-home.php");
                 window.location.replace("old-home.php");
             }
-        }).fail(function () {
+        }).fail(function() {
             alert('Something went wrong with a request to the server');
             $('.w-form-fail').show();
         });
     });
 
-    $('#adminbtn').click(function () {
+    $('#adminbtn').click(function() {
         console.log("was here");
         $('.log-in-card').hide();
-        $('.submit-button').click(function (event) {
+        $('.submit-button').click(function(event) {
             event.preventDefault();
             let admin_id = $('#name').val();
             let admin_password = $('#email').val();
@@ -120,19 +123,21 @@ $(document).ready(function () {
                     adminID: admin_id,
                     adminPass: admin_password
                 }
-            }).done(function (response) {
+            }).done(function(response) {
                 console.log(response);
                 if (response === "<script> alert('User not found');</script>") {
                     $('#alertbox').html(response);
                     $('.w-form-fail').show();
-                } if (response === "<script>alert('Logged in successfully!');</script>") {
+                }
+                if (response === "<script>alert('Logged in successfully!');</script>") {
                     $('#alertbox').html(response);
                     window.location.replace("admin.php");
-                } if (response === "<script>alert('Username or password incorrect!');</script>") {
+                }
+                if (response === "<script>alert('Username or password incorrect!');</script>") {
                     $('#alertbox').html(response);
                     $('.w-form-fail').show();
                 }
-            }).fail(function () {
+            }).fail(function() {
                 alert('Something went wrong with a request to the server');
             });
         });
@@ -152,7 +157,7 @@ $(document).ready(function () {
     }*/
 
     $('#give-feedback').click(function(event) {
-        event.preventDefault(); 
+        event.preventDefault();
         let Iid = $('#isseue-id').val();
         let Id = $('#ID-number').val();
         let desc = $('#Issue-description').val();
@@ -163,7 +168,7 @@ $(document).ready(function () {
                 ID: Id,
                 description: desc
             }
-        }).done(function (response) {
+        }).done(function(response) {
             console.log(response);
             if (response === "FAILED") {
                 $('.w-form-fail').show();
@@ -172,29 +177,29 @@ $(document).ready(function () {
                 alert('Feedback added!')
                 window.location.replace("old-home.php");
             }
-        }).fail(function () {
+        }).fail(function() {
             alert('Something went wrong with a request to the server');
             $('.w-form-fail').show();
         });
     });
 
-    $('#load-feedback').click(function(){
+    $('#load-feedback').click(function() {
         let issueNum = $('#feedb-load').val();
-        $.ajax("old-home.php",{
+        $.ajax("old-home.php", {
             type: "POST",
             data: {
                 issueID: issueNum
             }
-        }).done(function(response){
+        }).done(function(response) {
             //console.log(response);
             //alert("Feedback Loaded!");
             $('body').html(response);
-        }).fail(function(){
+        }).fail(function() {
             alert('Something went wrong with a request to the server');
         });
     });
 
-    $('#submit-update-issue').click(function(event){
+    $('#submit-update-issue').click(function(event) {
         event.preventDefault();
         let issueNum = $('#ID-number-update').val();
         let stat = $('#current-status').val();
@@ -206,12 +211,47 @@ $(document).ready(function () {
                 issueID: issueNum,
                 status: stat
             }
-        }).done(function(){
+        }).done(function() {
             $('.w-form-done').show();
             alert('Feedback added!')
-        }).fail(function(){
+        }).fail(function() {
             alert('Something went wrong with the server');
             $('.w-form-fail').show();
         });
+    });
+
+    $('#add-user').click(function(event) {
+        console.log("Was here in add user");
+        event.preventDefault();
+        let IDnum1 = $('#ID-number').val();
+        let cluster_name1 = $('#cluster').val();
+        let Household = $('#household').val();
+        let roomnum = $('#Issue-description').val();
+        let pwd = $('#password').val();
+        console.log(IDnum1);
+        console.log(cluster_name1);
+        console.log(Household);
+        console.log(roomnum);
+        $.ajax("backend/createRES.php", {
+            type: "POST",
+            data: {
+                IDnum: IDnum1,
+                cluster_name: cluster_name1,
+                household: Household,
+                room_num: roomnum,
+                pwd: pwd
+            }
+        }).done(function() {
+            $('.w-form-done').show();
+            window.location.replace("add-user.php");
+            alert('Resident added!')
+        }).fail(function() {
+            alert('Oops! Something went wrong while submitting the form');
+            $('.w-form-fail').show();
+            window.location.replace("add-user.php");
+
+        });
+
+
     });
 });

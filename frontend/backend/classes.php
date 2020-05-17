@@ -120,7 +120,7 @@ class DataManager {
     public function __construct($host, $username, $password, $db_name){
         #$this->conn = new PDO("mysql:host=$host;dbname=$db_name;charset=utf8mb4", $username, $password);
         $this->conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
-        
+
 
     }
 
@@ -139,7 +139,7 @@ class DataManager {
 
 class PrestonHallMember {
     private $IDnum;
-    
+
     public function __construct($IDnum){
         $this->IDnum = $IDnum;
     }
@@ -154,7 +154,7 @@ class Admin extends PrestonHallMember{
     private $room_num;
     private $position;
     private $full_name;
-    
+
 
     public function __construct($IDnum, $cluster_name, $room_num, $position, $full_name){
         parent::__construct($IDnum);
@@ -186,11 +186,14 @@ class Resident extends PrestonHallMember{
     private $household;
     private $room_num;
 
+
     public function __construct($IDnum, $cluster_name, $household, $room_num){
         parent::__construct($IDnum);
         $this->cluster_name = $cluster_name;
         $this->household = $household;
         $this->room_num = $room_num;
+
+
     }
 
     public function getClusterName(){
@@ -204,6 +207,7 @@ class Resident extends PrestonHallMember{
     public function getHousehold(){
         return $this->household;
     }
+
 } #completed class
 
 class AdminController {
@@ -221,7 +225,7 @@ class AdminController {
         $statement->bindParam(':full_name', $full_name, PDO::PARAM_STR, strlen($full_name));
         $statement->execute();
     }
-    
+
     public function deleteAdmin(){
 
     }
@@ -263,6 +267,7 @@ class ResidentController {
         $statement->bindParam(':cluster_name', $cluster_name, PDO::PARAM_STR, strlen($cluster_name));
         $statement->bindParam(':household', $household, PDO::PARAM_STR, strlen($household));
         $statement->bindParam(':room_num', $room_num, PDO::PARAM_STR, strlen($room_num));
+
         $statement->execute();
     } #Completed function, adds a resident to the database given the required parameters
 
@@ -305,14 +310,14 @@ class Login {
         $statement->bindParam(':password', $password, PDO::PARAM_STR, strlen($password));
         $statement->execute();
         $usernames = $statement->fetchAll(PDO::FETCH_ASSOC);
-        
+
         $state = FALSE;
 
         if(empty($username)){
             echo "<script>alert('User not found');</script>";
             return FALSE;
         }
-        
+
         foreach($usernames as $username){
             if(isset($username['username'])){
                 $this->username = $username['username'];
@@ -338,14 +343,14 @@ class Login {
         $statement->bindParam(':password', $password, PDO::PARAM_STR, strlen($password));
         $statement->execute();
         $usernames = $statement->fetchAll(PDO::FETCH_ASSOC);
-        
+
         $state = FALSE;
 
         if(empty($username)){
             echo "<script>alert('User not found');</script>";
             return FALSE;
         }
-        
+
         foreach($usernames as $username){
             if(isset($username['username'])){
                 $this->username = $username['username'];
@@ -382,7 +387,7 @@ class WashroomScheduleController {
     }
 
     public function deleteWashroomSchedule($washroom_schedule){
-        
+
     }
 
 }
@@ -439,7 +444,7 @@ class IssueController {
         //     echo $issues['date'] . " " . $issues['classification'] . " " . $issues['status'] . " " . $issues['description'] . " " . $issues[cluster_name] . " " . $issues['room_num'] . " " . $issues['household'];
         // }
         return $issues;
-    } #returns an associative list of issues reported by a hall member using the hall member's ID number 
+    } #returns an associative list of issues reported by a hall member using the hall member's ID number
 
     public function updateIssue($issueID, $status){
         $statement = $this->database->prepare('UPDATE issues SET status = :status WHERE issueID = :issueID;');
@@ -449,7 +454,7 @@ class IssueController {
     }
 
     public function viewIssuesByCluster($cluster_name){
-        
+
     }
 
     public function viewIssuesByStatus($status){
@@ -502,7 +507,7 @@ class Feedback {
     public function getFeedbackID(){
         return $this->feedbackID;
     }
-    
+
     public function getSender(){
         return $this->sender;
     }
@@ -525,7 +530,7 @@ class Feedback {
 
     public function getDate(){
         return $this->date;
-    } 
+    }
 
     public function getIssueID(){
         return $this->issueID;
@@ -570,12 +575,12 @@ class FeedbackController {
         foreach($feedback as $f){
             $feedback_id = $f['feedbackID'];
         }
-        
+
         $statement = $this->database->prepare('INSERT INTO feedback_comments (issueID, feedbackID, comment, sender) VALUES (:issueID, :feedback_id, :comment, :feedback_sender)');
         $statement->bindParam(':issueID', $issueID, PDO::PARAM_INT);
         $statement->bindParam(':feedback_id', $feedback_id, PDO::PARAM_INT);
         $statement->bindParam(':comment', $comment, PDO::PARAM_STR, strlen($comment));
-        
+
 
         $feedback_sender = "NOT FOUND";
 
@@ -619,7 +624,7 @@ class FeedbackController {
             $feedbackObj->setFeedbackID($f['feedbackID']);
             $feedbackObj->setSender($f['sender']);
             $feedbackObj->setRead($f['isRead']);
-            
+
             $this->feedback[] = $feedbackObj;
         }
     }
@@ -679,7 +684,7 @@ class Slot {
     public function getResidentID(){
         return $this->$residentID;
     }
-    
+
 }
 
 class Machine{
@@ -705,7 +710,7 @@ class Machine{
 
     public function liberateSlot($date, $residentID){
 
-    }     
+    }
 
 }
 
@@ -717,7 +722,7 @@ class Report {
     private $admin;
     private $feedback_list;
     private $maintenance_schedule; //not finished :MaintenanceScheduler
-    
+
     public function viewStartDate(){
         return $startDate;
     }
@@ -737,13 +742,13 @@ class Report {
     public function issuesAndCluster(){
 
     }
-    
+
     public function issuesAndMSchedule(){
-        
+
     }
 
     public function feedbackAndResidents(){
-        
+
     }
 
 }
@@ -762,7 +767,7 @@ try {
 
 
 #$residentControll = new ResidentController($data_store);
-    
+
 #$test_out = $residentControll->getResident('720117676');
 
 ###################################################
