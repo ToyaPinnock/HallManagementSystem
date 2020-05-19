@@ -8,24 +8,33 @@ if (isset($_POST['IDnum'])) {
   #$idCount = count($issues);
   #$i = 0;
 ?>
-  <?php foreach ($issues as $issue) : ?>
-    <div class="form-card">
-      <!---->
-      <h1>TrackIssue Number: <?= $issue['issueID']; ?></h1>
-      <h5>Description: <?= $issue['description']; ?></h5>
-      <div class="viewissue">
-        <!--<h6>Issue Number:</h6>-->
-        <h6>Date Logged: <?= $issue['date']; ?></h6>
-        <h6>Status: <?= $issue['status']; ?></h6>
-        <p id="feedback-id" style="display: hidden"></p>
-        <a href="give-feedback.php">Add feedback</a>
-      </div>
-      <h4>Appointment Date: <?= $issue['appDate']; ?></h4>
-      <h4>Appointment Time: <?= $issue['appTime']; ?></h4>
-      <h2>Confirmed: <?= $issue['Confirmed']; ?></h2>
-    </div>
-    <!---->
-  <?php endforeach; ?>
-<?php
-}
-?>
+<section class=" jumbotron" class="container-fluid">
+        <div class="container" style="padding:50px; ">
+                <div class="row justify-content-md-center" >
+                    <?php foreach ($issues as $issue) : ?>
+                    <section class=" jumbotron">
+                        <div class="container" style="padding:50px; ">
+                            <div class="row justify-content-md-center" >
+                        <div>
+                        <div class="card" style="width: 75%; height:30rem; padding:30px; box-shadow: 0 4px 8px 0 rgb(0, 89, 255);">
+                        <div class="card-body" style="padding:60px;">
+                        <div>
+                        <h1 class="card-title">TrackIssue Number: <?= $issue['issueID']; ?></h3>
+                        <h2 class="card-subtitle mb-2 text-muted">Description: <?= $issue['description']; ?>"</h2>
+                        <h6  class="card-text">Date Logged: <?= $issue['date']; ?></h6>
+                        <h6 class="card-text">Status: <?= $issue['status']; ?></h6>
+                        <p id="feedback-id" class="card-text" style="display: hidden"></p>
+                        <a href="give-feedback.php">Add feedback</a>
+                        <h4 class="card-text">Appointment Date: <?= $issue['appDate']; ?></h4>
+                        <h4 class="card-text">Appointment Time: <?= $issue['appTime']; ?></h4>
+                        <h2 class="class-text">Confirmed: <?= $issue['Confirmed']; ?></h2>
+                    </div>
+            </div>
+        </div>
+</section>
+                    <?php endforeach; ?>
+        <?php
+        }
+        ?>
+
+

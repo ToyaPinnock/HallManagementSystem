@@ -85,7 +85,7 @@ if($_SESSION['isLogged'] === FALSE){
             <div class="card" style="width: 18rem;">
                 <img src="https://media.origaudiopromo.com/EPOIVw-UfdyO1LA/w:300/h:219/q:75/https://origaudiopromo.com/wp-content/uploads/2019/07/space-background-website.jpeg" class="card-img-top" alt="...">
             <div class="card-body">
-                <a  href=" .php "id="track-issue" >
+                <a  href=" track-issue.php "id="track-issue" >
                     <h3 class="card-text">View All Your Issues</h3>
                 </a>
 
