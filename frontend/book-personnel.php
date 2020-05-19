@@ -15,85 +15,104 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Wed Nov 27 2019 21:03:53 GMT+0000 (Coordinated Universal Time)  -->
-<html data-wf-page="5ddea24d63de4e1abb6724b4" data-wf-site="5dd89354578babc32818ce3f">
-
+<!--  Last Published: Tue Nov 26 2019 09:23:06 GMT+0000 (Coordinated Universal Time)  -->
+<html data-wf-page="5ddad863967a3b21c1340a08" data-wf-site="5dd89354578babc32818ce3f">
 <head>
     <meta charset="utf-8">
-    <title>View All Issues</title>
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <script src="azph_hms.js" type="text/javascript"></script>
-    <meta content="View All Issues" property="og:title">
+    <title>Preston Hall Management System</title>
+    <meta content="Admin" property="og:title">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <meta content="Webflow" name="generator">
-    <link href="css/normalize.css" rel="stylesheet" type="text/css">
-    <link href="css/webflow.css" rel="stylesheet" type="text/css">
-    <link href="css/az-preston-hall-management-system.webflow.css" rel="stylesheet" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        WebFont.load({
-            google: {
-                families: ["Roboto:100,300,300italic,regular,500,700,900"]
-            }
-        });
-    </script>
-    <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
-    <script type="text/javascript">
-        ! function(o, c) {
-            var n = c.documentElement,
-                t = " w-mod-";
-            n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
-        }(window, document);
-    </script>
-    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
-    <link href="images/webclip.png" rel="apple-touch-icon">
+
+
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" herf="/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 
-<body>
-    <div data-collapse="medium" data-animation="default" data-duration="400" class="navbar w-nav">
-        <div class="w-container">
-            <nav role="navigation" class="w-nav-menu"><a href="#" class="navbtn w-button">Notifications</a></nav><a href="index.html" class="nav-link w-nav-link">Home</a><a href="admin.html" class="nav-link w-nav-link">Admin</a><a href="index.php" class="nav-link w-nav-link">Sign Out</a>
-            <div class="w-nav-button">
-                <div class="w-icon-nav-menu"></div>
+<body class="jumbotron ">
+<!--NAV BAR-->
+<section>
+    <div class="container ">
+        <nav class="navbar navbar-expand-lg fixed-top  navbar-dark bg-dark">
+            <span class="navbar-brand mb-0 h1">AZPrestonHallManagement</span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="old-home.php">Home <span class="sr-only">(current)</span></a>
+                </li>
+            </div>
+        </nav>
+    </div>
+</section>
+
+<section class="jumbotron" >
+        <div class="container" style="padding:50px; ">
+        <div class="row justify-content-md-center" >
+            <div  >
+                <div class="card" style="width: 100%;  padding:30px; box-shadow: 0 4px 8px 0 rgb(0, 89, 255);">
+                <div class="card-body text-center" style="padding:60px;">
+                <div>
+                <h1 class="card-title">AZ Preston Hall Maintenance System</h3>
+
+                <h2 class="card-subtitle mb-2 text-muted">View All User Issues</h2>
+
+            </div>
             </div>
         </div>
     </div>
-    <div class="hero-section">
-        <div class="column w-row">
-            <div class="w-col w-col-6">
-                <div class="hero-card">
-                    <h2>AZ Preston Hall Management System</h2>
-                    <h5>View All User Issues</h5>
+</div>
+</div>
+</section>
 
-                    <?php
-                    $view_all = new IssueController($data_store);
-                    $view_all->viewAllIssues();
-                    ?>
+<section class=" container-fluid" >
+<div class="row justify-content-md">
 
 
-                </div>
-            </div>
-            </>
-            <div class="column w-row">
-                <div class="w-col w-col-4">
-                    <h5>Book Personnel</h5>
-                    <div class="form w-form">
-                        <form id="email-form" name="email-form" data-name="Email Form" class="w-clearfix">
+            <div style="padding:20px; ">
+                <div class="card" style="width: 100%; height:30rem; padding:20px; box-shadow: 0 4px 8px 0 rgb(0, 89, 255);">
+                    <div id="loginform" class="card-body ">
+                        <form class="form-signin" id="email-form" name="email-form" data-name="Email Form">
+                            <h3 class="h3 mb-3 font-weight-normal">Book Maintainece Personnel</h3>
+
                             <label for="name">Enter Issue ID</label>
-                            <input type="text" class="w-input" maxlength="256" name="ID-number" data-name="ID number" placeholder="Issue ID" id="ID-number-update" required="">
+                            <input type="text"  maxlength="256" name="ID-number" data-name="ID number" style="width:100%; padding:10px;" placeholder="Issue ID" id="ID-number-update" required="">
+                            <br>
                             <label for="name">Enter Appointment Date</label>
-                            <input type="date" class="w-input" maxlength="256" name="app-date" data-name="app date" placeholder="Appointment Date" id="app-date-update" required="">
+                            <input type="date" maxlength="256" name="app-date" data-name="app date" style="width:100%; padding:10px;" placeholder="Appointment Date" id="app-date-update" required="">
+                            <br>
                             <label for="name">Enter Appointment Time</label>
-                            <input type="time" class="w-input" maxlength="256" name="app-time" data-name="app time" placeholder="Appointment Time" id="app-time-update" required="">
-                            <input id="book-personnel" type="submit" value="Submit" data-wait="Please wait..." class="btn-filled blue w-button">
+                            <input type="time" maxlength="256" name="app-time" data-name="app time" style="width:100%; padding:10px;" placeholder="Appointment Time" id="app-time-update" required="">
+                            <br>
+                            <input id="book-personnel"  class="btn btn-lg btn-primary btn-block" type="submit" value="Submit" data-wait="Please wait..." class="btn-filled blue w-button">
+
                         </form>
                     </div>
                 </div>
             </div>
+            <div class=" container">
+                <?php
+                $view_all = new IssueController($data_store);
+                $view_all->viewAllIssues();
+                ?>
+            </div>
 
-            <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-            <script src="js/webflow.js" type="text/javascript"></script>
-            <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+</div>
+    </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="app.js" type="text/javascript"></script>
+<script src="azph_hms.js" type="text/javascript"></script>
+
+
+
+
+
 </body>
 
 </html>

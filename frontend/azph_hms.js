@@ -1,50 +1,35 @@
 $(document).ready(function() {
-    $("#residentbtn").click(function() {
-        //console.log("button loaded");
-        $(".log-in-card").hide();
-        $(".submit-button").click(function(event) {
-            event.preventDefault();
-            let resident_id = $("#name").val();
-            let resident_password = $("#email").val();
+    $('#submitbtn').click(function(event) {
+        event.preventDefault();
+        let resident_id = $("#name").val();
+        let resident_password = $("#email").val();
 
-            $.ajax("backend/login.php", {
-                    type: "POST",
-                    data: {
-                        residentID: resident_id,
-                        residentPass: resident_password,
-                    },
-                })
-                .done(function(response) {
-                    console.log(response);
-                    console.log("came back");
-                    if (response === "<script> alert('User not found');</script>") {
-                        $("#alertbox").html(response);
-                        $(".w-form-fail").show();
-                    }
-                    if (
-                        response === "<script>alert('Logged in successfully!');</script>"
-                    ) {
-                        $("#alertbox").html(response);
-                        //window.location.replace("confirmation.php");
-                        window.location.replace("confirmation.php");
-                    }
-                    if (
-                        response ===
-                        "<script>alert('Username or password incorrect!');</script>"
-                    ) {
-                        $("#alertbox").html(response);
-                        $(".w-form-fail").show();
-                    }
-                    /*else {
-                                       //$('#alertbox').html(response);
-                                       $('.w-form-fail').show();
-                                   }*/
-                })
-                .fail(function() {
-                    alert("Something went wrong with a request to the server");
-                });
-        });
+        $.ajax("backend/login.php", {
+                type: "POST",
+                data: {
+                    residentID: resident_id,
+                    residentPass: resident_password,
+                },
+            })
+            .done(function(response) {
+                console.log(response);
+
+                if (response === "<script> alert('User not found');</script>") {
+                    alert("User Not found");
+                }
+                if (response === "<script>alert('Logged in successfully!');</script>") {
+                    alert("Logged in successfully!");
+                    window.location.replace("confirmation.php");
+                }
+                if (response === "<script>alert('Username or password incorrect!');</script>") {
+                    alert("User or password incorrect!");
+                }
+            })
+            .fail(function() {
+                alert("Something went wrong with a request to the server");
+            });
     });
+
 
     $("#continue-button").click(function() {
         window.location.replace("old-home.php");
@@ -87,6 +72,7 @@ $(document).ready(function() {
 
     $("#submit-issue").click(function(event) {
         event.preventDefault();
+        console.log("worked")
         let clust = $("#cluster").val();
         let cat = $("#classification").val();
         let desc = $("#Issue-description").val();
@@ -107,10 +93,10 @@ $(document).ready(function() {
             .done(function(response) {
                 console.log(response);
                 if (response === "FAILED") {
-                    $(".w-form-fail").show();
+                    alert("Oops! Something went wrong while submitting the form.")
                 } else {
                     $(".w-form-done").show();
-                    //window.location.replace("../old-home.php");
+                    alert('Thank you! Your submission has been received!')
                     window.location.replace("old-home.php");
                 }
             })
@@ -189,20 +175,21 @@ $(document).ready(function() {
             .done(function(response) {
                 console.log(response);
                 if (response === "FAILED") {
-                    $(".w-form-fail").show();
+                    alert("Oops! Something went wrong while submitting the form.");
                 } else {
-                    $(".w-form-done").show();
-                    alert("Feedback added!");
+                    alert("Thank you! Your submission has been received!");
+
                     window.location.replace("old-home.php");
                 }
             })
             .fail(function() {
                 alert("Something went wrong with a request to the server");
-                $(".w-form-fail").show();
+                alert("Oops! Something went wrong while submitting the form.")
             });
     });
 
-    $("#load-feedback").click(function() {
+    $("#load-feedback").click(function(event) {
+        event.preventDefault();
         let issueNum = $("#feedb-load").val();
         $.ajax("old-home.php", {
                 type: "POST",
@@ -211,8 +198,8 @@ $(document).ready(function() {
                 },
             })
             .done(function(response) {
-                //console.log(response);
-                //alert("Feedback Loaded!");
+                console.log(response);
+                alert("Feedback Loaded!");
                 $("body").html(response);
             })
             .fail(function() {
@@ -259,13 +246,13 @@ $(document).ready(function() {
                     appTime: aTime,
                 },
             })
-            .done(function() {
-                $(".w-form-done").show();
+            .done(function(response) {
+
                 alert("Appointment date and time set!");
             })
             .fail(function() {
                 alert("Something went wrong with the server");
-                $(".w-form-fail").show();
+
             });
     });
 
