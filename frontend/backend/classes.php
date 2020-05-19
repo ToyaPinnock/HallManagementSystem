@@ -623,31 +623,34 @@ class IssueController
             echo "</div>";
         }
     }
-   	public function viewAllIssues(){
-                  $statement = $this->database->query('SELECT * FROM issues;');
-                $issues = $statement->fetchAll(PDO::FETCH_ASSOC);
-                echo "<section >";
-                foreach($issues as $issue){
-                    echo"<div  style=\"padding:10px;\">";
-                    echo "<div class=\"card\" style=\"width: 100%; height:30rem; padding:30px; \">";
-                    echo "<div class=\"card-body\" style=\"padding:60px; box-shadow: 0 4px 8px 0 rgb(0, 89, 255);\">";
-                    echo "<h3 class=\"card-title\">Issue ID: ". $issue['issueID'] ."</h3>";
-                    echo "<h6 class=\"card-text\">Date: ". $issue['date'] ."</h6>";
-                    echo "<h6 class=\"card-text\">Hall Memeber ID number: ". $issue['HMemberIDnum'] ."</h6>";
-                    echo "<h6 class=\"card-text\">Classification: ". $issue['classification'] ."</h6>";
-                    echo "<h6 class=\"card-text\">Status: ". $issue['status'] ."</h6>";
-                    echo "<h6 class=\"card-text\">Description: ". $issue['description'] ."</h6>";
-                    echo "<h6 class=\"card-text\">Cluster name: ". $issue['cluster_name'] ."</h6>";
-                    echo "<h6 class=\"card-text\">Room number: ". $issue['room_num'] ."</h6>";
-                    echo "<h6 class=\"card-text\">Household: ". $issue['household'] ."</h6>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
-            }
+    public function viewAllIssues()
+    {
+        $statement = $this->database->query('SELECT * FROM issues;');
+        $issues = $statement->fetchAll(PDO::FETCH_ASSOC);
+        echo "<section >";
+        foreach ($issues as $issue) {
+            echo "<div  style=\"padding:10px;\">";
+            echo "<div class=\"card\" style=\"width: 100%; height:30rem; padding:30px; \">";
+            echo "<div class=\"card-body\" style=\"padding:60px; box-shadow: 0 4px 8px 0 rgb(0, 89, 255);\">";
+            echo "<h3 class=\"card-title\">Issue ID: " . $issue['issueID'] . "</h3>";
+            echo "<h6 class=\"card-text\">Date: " . $issue['date'] . "</h6>";
+            echo "<h6 class=\"card-text\">Hall Memeber ID number: " . $issue['HMemberIDnum'] . "</h6>";
+            echo "<h6 class=\"card-text\">Classification: " . $issue['classification'] . "</h6>";
+            echo "<h6 class=\"card-text\">Status: " . $issue['status'] . "</h6>";
+            echo "<h6 class=\"card-text\">Description: " . $issue['description'] . "</h6>";
+            echo "<h6 class=\"card-text\">Cluster name: " . $issue['cluster_name'] . "</h6>";
+            echo "<h6 class=\"card-text\">Room number: " . $issue['room_num'] . "</h6>";
+            echo "<h6 class=\"card-text\">Household: " . $issue['household'] . "</h6>";
+            echo "<h6 class=\"card-text\">appDate: " . $issue['appDate'] . "</h6>";
+            echo "<h6 class=\"card-text\">appTime: " . $issue['appTime'] . "</h6>";
+            echo "<h6 class=\"card-text\">Confirmed: " . $issue['Confirmed'] . "</h6>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+        }
 
-                echo "</section>";
+        echo "</section>";
     }
-
 }
 
 class Feedback
