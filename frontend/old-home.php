@@ -56,7 +56,7 @@ if($_SESSION['isLogged'] === FALSE){
                 <h2 class="card-subtitle mb-2 text-muted">"Pursuing Excellence"</h2>
                 <br>
                 <input type="text"  maxlength="256" name="isseue-id" data-name="isseue id" placeholder="Enter issue number" id="feedb-load" style="width: 210px; padding:10px;">
-                <a id="load-feedback" class="btn btn-lg btn-primary ">Load Feedback</a>
+                <a id="load-feedback" class="btn btn-lg btn-primary btn-block">Load Feedback</a>
 
             </div>
             </div>
@@ -85,7 +85,7 @@ if($_SESSION['isLogged'] === FALSE){
             <div class="card" style="width: 18rem;">
                 <img src="https://media.origaudiopromo.com/EPOIVw-UfdyO1LA/w:300/h:219/q:75/https://origaudiopromo.com/wp-content/uploads/2019/07/space-background-website.jpeg" class="card-img-top" alt="...">
             <div class="card-body">
-                <a  href=" view-all-issues.php "id="track-issue" >
+                <a  href=" .php "id="track-issue" >
                     <h3 class="card-text">View All Your Issues</h3>
                 </a>
 

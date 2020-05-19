@@ -96,7 +96,7 @@ if($_SESSION['isLogged'] === FALSE){
 
     </div>
 </div>
-<div class="container" style="width:40%; height:200px; padding-top:200px; "><img src="https://media.origaudiopromo.com/EPOIVw-UfdyO1LA/w:300/h:219/q:75/https://origaudiopromo.com/wp-content/uploads/2019/07/space-background-website.jpeg" class="card-img-top" alt="..."   ></div>
+<div class="container" style="width:35%; height:80px; padding-top:110px; "><img src="https://cdn131.picsart.com/320580576040201.jpg" class="card-img-top" alt="..."   ></div>
 </div>
 
 </section>

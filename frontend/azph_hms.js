@@ -50,7 +50,7 @@ $(document).ready(function() {
     $("#track-issue-1").click(function(event) {
         event.preventDefault();
         let idnum = $("#track-idNum").val();
-        //console.log(idnum);
+        console.log(idnum);
         $.ajax("backend/show-issues.php", {
                 type: "POST",
                 data: {
@@ -58,7 +58,7 @@ $(document).ready(function() {
                 },
             })
             .done(function(response) {
-                //alert(response);
+                console.log(response);
                 $("#show-issues-1").html(response);
             })
             .fail(function() {
@@ -221,12 +221,12 @@ $(document).ready(function() {
                 },
             })
             .done(function() {
-                $(".w-form-done").show();
+                alert("Issue Status Successufully Updated!")
                 alert("Feedback added!");
             })
             .fail(function() {
                 alert("Something went wrong with the server");
-                $(".w-form-fail").show();
+                alert("Oops! Something went wrong ")
             });
     });
 

@@ -11,7 +11,7 @@ if (isset($_POST['IDnum'])) {
   <?php foreach ($issues as $issue) : ?>
     <div class="form-card">
       <!---->
-      <h1>Track Issue#: <?= $issue['issueID']; ?></h1>
+      <h1>TrackIssue Number: <?= $issue['issueID']; ?></h1>
       <h5>Description: <?= $issue['description']; ?></h5>
       <div class="viewissue">
         <!--<h6>Issue Number:</h6>-->
@@ -22,6 +22,7 @@ if (isset($_POST['IDnum'])) {
       </div>
       <h4>Appointment Date: <?= $issue['appDate']; ?></h4>
       <h4>Appointment Time: <?= $issue['appTime']; ?></h4>
+      <h2>Confirmed: <?= $issue['Confirmed']; ?></h2>
     </div>
     <!---->
   <?php endforeach; ?>

@@ -1,162 +1,195 @@
 <?php
-class Issue {
+class Issue
+{
     private $HMemberIDnum, $date, $classification, $status, $description, $cluster_name, $room_num, $household;
     private $issueID;
 
-    function __construct($HMemberIDnum, $classification, $description){
+    function __construct($HMemberIDnum, $classification, $description)
+    {
         $this->HMemberIDnum = $HMemberIDnum;
         $this->classification = $classification;
         $this->description = $description;
     }
 
-    public function getIssueID(){
+    public function getIssueID()
+    {
         return $this->issueID;
     }
 
-    public function getClassification(){
+    public function getClassification()
+    {
         return $this->classification;
     }
 
-    public function setStatus($status){
+    public function setStatus($status)
+    {
         $this->status = $status;
     }
 
-    public function getDate(){
+    public function getDate()
+    {
         return $this->date;
     }
 
-    public function changeClassification($classification){
+    public function changeClassification($classification)
+    {
         $this->classification = $classification;
     }
 
-    public function getHMemberIDnum(){
+    public function getHMemberIDnum()
+    {
         return $this->HMemberIDnum;
     }
 
-    public function getDescription(){
+    public function getDescription()
+    {
         return $this->description;
     }
 
-    public function changeDescription($description){
+    public function changeDescription($description)
+    {
         $this->description = $description;
     }
 
-    public function getClusterName(){
+    public function getClusterName()
+    {
         return $this->cluster_name;
     }
 
-    public function getRoomNum(){
+    public function getRoomNum()
+    {
         return $this->room_num;
     }
 
-    public function getHousehold(){
+    public function getHousehold()
+    {
         return $this->household;
     }
 
-    public function setDate($date){ #in format "m d Y", ie: "11 24 2019"
+    public function setDate($date)
+    { #in format "m d Y", ie: "11 24 2019"
         $this->date = $date;
     }
 
-    public function setClusterName($cluster_name){
+    public function setClusterName($cluster_name)
+    {
         $this->cluster_name = $cluster_name;
     }
 
-    public function setRoomNumber($room_num){
+    public function setRoomNumber($room_num)
+    {
         $this->room_num = $room_num;
     }
 
-    public function setHousehold($household){
+    public function setHousehold($household)
+    {
         $this->household = $household;
     }
 } #class complete
 
-class Appointment {
+class Appointment
+{
     private $time, $date, $issueID;
 
-    function __construct($time, $date, $issueID){
+    function __construct($time, $date, $issueID)
+    {
         $this->time = $time;
         $this->date = $date;
         $this->issueID;
     }
 
-    public function getTime(){
+    public function getTime()
+    {
         return $this->time;
     }
 
-    public function getDate(){
+    public function getDate()
+    {
         return $this->date;
     }
 
-    public function getIssueID(){
+    public function getIssueID()
+    {
         return $this->issueID;
     }
 } #class complete
 
-class MaintenancePersonnel {
+class MaintenancePersonnel
+{
     private $full_name, $description;
 
-    function __construct($full_name, $description){
+    function __construct($full_name, $description)
+    {
         $this->full_name = $full_name;
         $this->description = $description;
     }
 
-    public function getFullName(){
+    public function getFullName()
+    {
         return $this->full_name;
     }
 
-    public function getDescription(){
+    public function getDescription()
+    {
         return $this->description;
     }
 
-    public function getFullNameDescription(){
+    public function getFullNameDescription()
+    {
         $full_n_des = array($this->full_name, $this->description);
         return $full_n_des; #This should be imploded to access the values
     }
 }
 
-class DataManager {
+class DataManager
+{
     private $conn;
 
-    public function __construct($host, $username, $password, $db_name){
+    public function __construct($host, $username, $password, $db_name)
+    {
         #$this->conn = new PDO("mysql:host=$host;dbname=$db_name;charset=utf8mb4", $username, $password);
         $this->conn = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
-
-
     }
 
-    public function retrieveResidents(){
-
+    public function retrieveResidents()
+    {
     }
 
-    public function retrieveIssues(){
-
+    public function retrieveIssues()
+    {
     }
 
-    public function dataBank(){
+    public function dataBank()
+    {
         return $this->conn;
     }
 } #partially completed
 
-class PrestonHallMember {
+class PrestonHallMember
+{
     private $IDnum;
 
-    public function __construct($IDnum){
+    public function __construct($IDnum)
+    {
         $this->IDnum = $IDnum;
     }
 
-    public function getIDnum(){
+    public function getIDnum()
+    {
         return $this->IDnum;
     }
 } #completed class
 
-class Admin extends PrestonHallMember{
+class Admin extends PrestonHallMember
+{
     private $cluster_name;
     private $room_num;
     private $position;
     private $full_name;
 
 
-    public function __construct($IDnum, $cluster_name, $room_num, $position, $full_name){
+    public function __construct($IDnum, $cluster_name, $room_num, $position, $full_name)
+    {
         parent::__construct($IDnum);
         $this->cluster_name = $cluster_name;
         $this->room_num = $room_num;
@@ -164,57 +197,69 @@ class Admin extends PrestonHallMember{
         $this->full_name = $full_name;
     }
 
-    public function getPosition(){
+    public function getPosition()
+    {
         return $this->position;
     }
 
-    public function getFullName(){
+    public function getFullName()
+    {
         return $this->full_name;
     }
 
-    public function getClusterName(){
+    public function getClusterName()
+    {
         return $this->cluster_name;
     }
 
-    public function getRoomNum(){
+    public function getRoomNum()
+    {
         return $this->room_num;
     }
 }
 
-class Resident extends PrestonHallMember{
+class Resident extends PrestonHallMember
+{
     private $cluster_name;
     private $household;
     private $room_num;
 
-    public function __construct($IDnum, $cluster_name, $household, $room_num){
+    public function __construct($IDnum, $cluster_name, $household, $room_num)
+    {
         parent::__construct($IDnum);
         $this->cluster_name = $cluster_name;
         $this->household = $household;
         $this->room_num = $room_num;
     }
 
-    public function getClusterName(){
+    public function getClusterName()
+    {
         return $this->cluster_name;
     }
 
-    public function getRoomNum(){
+    public function getRoomNum()
+    {
         return $this->room_num;
     }
 
-    public function getHousehold(){
+    public function getHousehold()
+    {
         return $this->household;
     }
 } #completed class
 
-class AdminController {
+class AdminController
+{
     private $admin;
     private $database;
 
-    public function __construct($database){
+    public function __construct($database)
+    {
         $this->database = $database->dataBank();
     }
 
-    public function addAdmin($id_num, $position, $full_name){
+    public function addAdmin($id_num, $position, $full_name)
+    {
         $statement = $this->database->prepare('INSERT INTO admin (id_num, position, full_name) VALUES (:id_num, :position, :full_name);');
         $statement->bindParam(':id_num', $id_num, PDO::PARAM_STR, strlen($id_num));
         $statement->bindParam(':position', $position, PDO::PARAM_STR, strlen($position));
@@ -222,11 +267,12 @@ class AdminController {
         $statement->execute();
     }
 
-    public function deleteAdmin(){
-
+    public function deleteAdmin()
+    {
     }
 
-    public function getAdmin($id_num){
+    public function getAdmin($id_num)
+    {
         $statement = $this->database->prepare('SELECT * FROM admin WHERE id_num = :id_num');
         $statement->bindParam(':id_num', $id_num, PDO::PARAM_STR, strlen($id_num));
         $statement->execute();
@@ -236,11 +282,11 @@ class AdminController {
             $this->admin = new Admin($a['id_num'], $a['cluster_name'], $a['room_num'], $a['position'], $a['full_name']);
         }*/
 
-        if($admin === []){
+        if ($admin === []) {
             echo "<script> alert('User not found');</script>";
             return FALSE;
         } else {
-            foreach($admin as $a){
+            foreach ($admin as $a) {
                 $this->admin = new Admin($a['id_num'], $a['cluster_name'], $a['room_num'], $a['position'], $a['full_name']);
             }
         }
@@ -248,15 +294,18 @@ class AdminController {
     } #Completed function, returns a admin object when the admin is found in the database given the admin's id number
 }
 
-class ResidentController {
+class ResidentController
+{
     private $resident;
     private $database;
 
-    public function __construct($database){
+    public function __construct($database)
+    {
         $this->database = $database->dataBank();
     }
 
-    public function addResident($IDnum, $cluster_name, $household, $room_num){
+    public function addResident($IDnum, $cluster_name, $household, $room_num)
+    {
         #$resident = new Resident($IDnum, $cluster_name, $household, $room_num);
         $statement = $this->database->prepare('INSERT INTO resident (IDnum, cluster_name, household, room_num) VALUES (:IDnum, :cluster_name, :household, :room_num);');
         $statement->bindParam(':IDnum', $IDnum, PDO::PARAM_STR, strlen($IDnum));
@@ -266,7 +315,8 @@ class ResidentController {
         $statement->execute();
     } #Completed function, adds a resident to the database given the required parameters
 
-    public function getResident($IDnum){
+    public function getResident($IDnum)
+    {
         $statement = $this->database->prepare('SELECT * FROM resident WHERE IDnum = :IDnum');
         $statement->bindParam(':IDnum', $IDnum, PDO::PARAM_STR, strlen($IDnum));
         $statement->execute();
@@ -276,11 +326,11 @@ class ResidentController {
         $resident = $statement->fetchAll(PDO::FETCH_ASSOC);
         #print_r($resident);
 
-        if($resident === []){
+        if ($resident === []) {
             echo "<script> alert('User not found');</script>";
             return FALSE;
         } else {
-            foreach($resident as $r){
+            foreach ($resident as $r) {
                 $this->resident = new Resident($r['IDnum'], $r['cluster_name'], $r['household'], $r['room_num']);
             }
         }
@@ -291,15 +341,18 @@ class ResidentController {
     } #Completed function, returns a resident object when the resident is found in the database given the resident's id number or FALSE if the resident is not found
 }
 
-class Login {
+class Login
+{
     private $username;
     private $password;
 
-    public function __construct($database){
+    public function __construct($database)
+    {
         $this->database = $database->dataBank();
     }
 
-    public function signIN($username, $password){
+    public function signIN($username, $password)
+    {
         $statement = $this->database->prepare('SELECT username FROM login WHERE username = :username AND password = :password');
         $statement->bindParam(':username', $username, PDO::PARAM_STR, strlen($username));
         $statement->bindParam(':password', $password, PDO::PARAM_STR, strlen($password));
@@ -308,13 +361,13 @@ class Login {
 
         $state = FALSE;
 
-        if(empty($username)){
+        if (empty($username)) {
             echo "<script>alert('User not found');</script>";
             return FALSE;
         }
 
-        foreach($usernames as $username){
-            if(isset($username['username'])){
+        foreach ($usernames as $username) {
+            if (isset($username['username'])) {
                 $this->username = $username['username'];
                 echo "<script>alert('Logged in successfully!');</script>";
                 $state = TRUE;
@@ -322,7 +375,7 @@ class Login {
             }
         }
 
-        if(!$state){
+        if (!$state) {
             echo "<script>alert('Username or password incorrect!');</script>";
             return FALSE;
         } else {
@@ -332,7 +385,8 @@ class Login {
         #return $state;
     } #Complete function, returns TRUE if the username and password matches from the database or FALSE if they do not
 
-    public function signInA($username, $password){
+    public function signInA($username, $password)
+    {
         $statement = $this->database->prepare('SELECT username FROM loginA WHERE username = :username AND password = :password');
         $statement->bindParam(':username', $username, PDO::PARAM_STR, strlen($username));
         $statement->bindParam(':password', $password, PDO::PARAM_STR, strlen($password));
@@ -341,13 +395,13 @@ class Login {
 
         $state = FALSE;
 
-        if(empty($username)){
+        if (empty($username)) {
             echo "<script>alert('User not found');</script>";
             return FALSE;
         }
 
-        foreach($usernames as $username){
-            if(isset($username['username'])){
+        foreach ($usernames as $username) {
+            if (isset($username['username'])) {
                 $this->username = $username['username'];
                 echo "<script>alert('Logged in successfully!');</script>";
                 $state = TRUE;
@@ -355,7 +409,7 @@ class Login {
             }
         }
 
-        if(!$state){
+        if (!$state) {
             echo "<script>alert('Username or password incorrect!');</script>";
             return FALSE;
         } else {
@@ -365,7 +419,8 @@ class Login {
         #return $state;
     } #Complete function, returns TRUE if the username and password matches from the database or FALSE if they do not
 
-    public function addLogin($username, $password){ #Use admin or resident controller to retrieve the admin or resident object then return the ID number of the object. A resident or admin has to be in the system before registering with a password
+    public function addLogin($username, $password)
+    { #Use admin or resident controller to retrieve the admin or resident object then return the ID number of the object. A resident or admin has to be in the system before registering with a password
         $statement = $this->database->prepare('INSERT INTO login (username, password) VALUES (:username, :password)');
         $statement->bindParam(':username', $username, PDO::PARAM_STR, strlen($username));
         $statement->bindParam(':password', $password, PDO::PARAM_STR, strlen($password));
@@ -374,29 +429,32 @@ class Login {
     }
 }
 
-class WashroomScheduleController {
+class WashroomScheduleController
+{
     private $washroom_schedule;
 
-    public function addWashroomSchedule($washroom_schedule){
-
+    public function addWashroomSchedule($washroom_schedule)
+    {
     }
 
-    public function deleteWashroomSchedule($washroom_schedule){
-
+    public function deleteWashroomSchedule($washroom_schedule)
+    {
     }
-
 }
 
-class IssueController {
+class IssueController
+{
     private $database;
     private $raw_database;
 
-    public function __construct($database){
+    public function __construct($database)
+    {
         $this->database = $database->dataBank();
         $this->raw_database = $database;
     }
 
-    public function addIssue($HMemberIDnum, $classification, $description){
+    public function addIssue($HMemberIDnum, $classification, $description)
+    {
         $statement = $this->database->prepare('INSERT INTO issues (HMemberIDnum, classification, date, description, cluster_name, room_num, household) VALUES (:HMemberIDnum, :classification, :date, :description, :cluster_name, :room_num, :household);');
         $resident_controller = new ResidentController($this->raw_database);
 
@@ -420,7 +478,8 @@ class IssueController {
         echo "<script> alert('Issue should be stored');</script>";
     }
 
-    public function addIssueBasic($description, $classification){
+    public function addIssueBasic($description, $classification)
+    {
         $statement = $this->database->prepare('INSERT INTO issues (description, classification, date) VALUES (:description, :classification, :date);');
         $date = date("m d Y"); #in format "m d Y", ie: "11 24 2019"
         $statement->bindParam(':date', $date, PDO::PARAM_STR, strlen($date));
@@ -429,74 +488,170 @@ class IssueController {
         $statement->execute();
     }
 
-    public function viewIssuesByHallMemberID($HMemberIDnum){
-        $statement = $this->database->prepare('SELECT issueID, date, classification, status, description, cluster_name, room_num, household FROM issues WHERE HMemberIDnum = :HMemberIDnum');
+    public function viewIssuesByHallMemberID($HMemberIDnum)
+    {
+        $statement = $this->database->prepare('SELECT issueID, date, classification, status, description, cluster_name, room_num, household, appDate, appTime, Confirmed FROM issues WHERE HMemberIDnum = :HMemberIDnum');
         $statement->bindParam(':HMemberIDnum', $HMemberIDnum, PDO::PARAM_STR, strlen($HMemberIDnum));
         $statement->execute();
         $issues = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        // foreach($residents as $resident){
-        //     echo $issues['date'] . " " . $issues['classification'] . " " . $issues['status'] . " " . $issues['description'] . " " . $issues[cluster_name] . " " . $issues['room_num'] . " " . $issues['household'];
-        // }
         return $issues;
     } #returns an associative list of issues reported by a hall member using the hall member's ID number
 
-    public function updateIssue($issueID, $status){
+    public function updateIssue($issueID, $status)
+    {
         $statement = $this->database->prepare('UPDATE issues SET status = :status WHERE issueID = :issueID;');
         $statement->bindParam(':status', $status, PDO::PARAM_STR, strlen($status));
         $statement->bindParam(':issueID', $issueID, PDO::PARAM_STR, strlen($issueID));
         $statement->execute();
     }
 
-    public function viewIssuesByCluster($cluster_name){
-
+    public function bookAppointment($issueID, $appDate, $appTime)
+    {
+        $statement = $this->database->prepare('UPDATE issues SET appDate = :appDate, appTime = :appTime WHERE issueID = :issueID;');
+        $statement->bindParam(':appDate', $appDate, PDO::PARAM_STR, strlen($appDate));
+        $statement->bindParam(':appTime', $appTime, PDO::PARAM_STR, strlen($appTime));
+        $statement->bindParam(':issueID', $issueID, PDO::PARAM_STR, strlen($issueID));
+        $statement->execute();
     }
 
-    public function viewIssuesByStatus($status){
-
+    public function confirmAppointment($issueID, $Confirmed)
+    {
+        $statement = $this->database->prepare('UPDATE issues SET Confirmed = :Confirmed WHERE issueID = :issueID;');
+        $statement->bindParam(':Confirmed', $Confirmed, PDO::PARAM_STR, strlen($Confirmed));
+        $statement->bindParam(':issueID', $issueID, PDO::PARAM_STR, strlen($issueID));
+        $statement->execute();
     }
 
-    public function viewIssuesByStatusANDHallMemberID($status, $HMemberIDnum){
-
-    }
-
-    public function viewIssuesByClassification($classification){
-
-    }
-
-    public function viewAllIssues(){
-        $statement = $this->database->query('SELECT * FROM issues;');
+    public function viewIssuesByCluster($cluster_name)
+    {
+        $statement = $this->database->query('SELECT * FROM issues WHERE cluster_name = :cluster_name;');
+        $statement->bindParam(':cluster_name', $cluster_name, PDO::PARAM_STR, strlen($cluster_name));
+        $statement->execute();
         $issues = $statement->fetchAll(PDO::FETCH_ASSOC);
-        echo "<section >";
 
-        foreach($issues as $issue){
-
-
-            echo"<div  style=\"padding:10px;\">";
-            echo "<div class=\"card\" style=\"width: 100%; height:30rem; padding:30px; \">";
-            echo "<div class=\"card-body\" style=\"padding:60px; box-shadow: 0 4px 8px 0 rgb(0, 89, 255);\">";
-            echo "<h3 class=\"card-title\">Issue ID: ". $issue['issueID'] ."</h3>";
-            echo "<h6 class=\"card-text\">Date: ". $issue['date'] ."</h6>";
-            echo "<h6 class=\"card-text\">Hall Memeber ID number: ". $issue['HMemberIDnum'] ."</h6>";
-            echo "<h6 class=\"card-text\">Classification: ". $issue['classification'] ."</h6>";
-            echo "<h6 class=\"card-text\">Status: ". $issue['status'] ."</h6>";
-            echo "<h6 class=\"card-text\">Description: ". $issue['description'] ."</h6>";
-            echo "<h6 class=\"card-text\">Cluster name: ". $issue['cluster_name'] ."</h6>";
-            echo "<h6 class=\"card-text\">Room number: ". $issue['room_num'] ."</h6>";
-            echo "<h6 class=\"card-text\">Household: ". $issue['household'] ."</h6>";
+        foreach ($issues as $issue) {
+            echo "<div class=\"hero-card\">";
+            echo "<h3>Issue ID: " . $issue['issueID'] . "</h3>";
+            echo "<h6>Date: " . $issue['date'] . "</h6>";
+            echo "<h6>Hall Memeber ID number: " . $issue['HMemberIDnum'] . "</h6>";
+            echo "<h6>Classification: " . $issue['classification'] . "</h6>";
+            echo "<h6>Status: " . $issue['status'] . "</h6>";
+            echo "<h6>Description: " . $issue['description'] . "</h6>";
+            echo "<h6>Cluster name: " . $issue['cluster_name'] . "</h6>";
+            echo "<h6>Room number: " . $issue['room_num'] . "</h6>";
+            echo "<h6>Household: " . $issue['household'] . "</h6>";
+            echo "<h6> Appointment Date: " . $issue['appDate'] . "</h6>";
+            echo "<h6> Appointment Time: " . $issue['appTime'] . "</h6>";
+            echo "<br><h3> CONFIRMED: " . $issue['Confirmed'] . "</h3>";
             echo "</div>";
-            echo "</div>";
-            echo "</div>";
-
-
-
         }
-
-        echo "</section>";
     }
+
+    public function viewIssuesByStatus($status)
+    {
+        $statement = $this->database->query('SELECT * FROM issues WHERE status = :status;');
+        $statement->bindParam(':status', $status, PDO::PARAM_STR, strlen($status));
+        $statement->execute();
+        $issues = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($issues as $issue) {
+            echo "<div class=\"hero-card\">";
+            echo "<h3>Issue ID: " . $issue['issueID'] . "</h3>";
+            echo "<h6>Date: " . $issue['date'] . "</h6>";
+            echo "<h6>Hall Memeber ID number: " . $issue['HMemberIDnum'] . "</h6>";
+            echo "<h6>Classification: " . $issue['classification'] . "</h6>";
+            echo "<h6>Status: " . $issue['status'] . "</h6>";
+            echo "<h6>Description: " . $issue['description'] . "</h6>";
+            echo "<h6>Cluster name: " . $issue['cluster_name'] . "</h6>";
+            echo "<h6>Room number: " . $issue['room_num'] . "</h6>";
+            echo "<h6>Household: " . $issue['household'] . "</h6>";
+            echo "<h6> Appointment Date: " . $issue['appDate'] . "</h6>";
+            echo "<h6> Appointment Time: " . $issue['appTime'] . "</h6>";
+            echo "<br><h3> CONFIRMED: " . $issue['Confirmed'] . "</h3>";
+            echo "</div>";
+        }
+    }
+
+    public function viewIssuesByStatusANDHallMemberID($status, $HMemberIDnum)
+    {
+        $statement = $this->database->query('SELECT * FROM issues WHERE status = :status && HMemberIDnum = :HMemberIDnum;');
+        $statement->bindParam(':status', $status, PDO::PARAM_STR, strlen($status));
+        $statement->bindParam(':HMemberIDnum', $HMemberIDnum, PDO::PARAM_STR, strlen($HMemberIDnum));
+        $statement->execute();
+        $issues = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($issues as $issue) {
+            echo "<div class=\"hero-card\">";
+            echo "<h3>Issue ID: " . $issue['issueID'] . "</h3>";
+            echo "<h6>Date: " . $issue['date'] . "</h6>";
+            echo "<h6>Hall Memeber ID number: " . $issue['HMemberIDnum'] . "</h6>";
+            echo "<h6>Classification: " . $issue['classification'] . "</h6>";
+            echo "<h6>Status: " . $issue['status'] . "</h6>";
+            echo "<h6>Description: " . $issue['description'] . "</h6>";
+            echo "<h6>Cluster name: " . $issue['cluster_name'] . "</h6>";
+            echo "<h6>Room number: " . $issue['room_num'] . "</h6>";
+            echo "<h6>Household: " . $issue['household'] . "</h6>";
+            echo "<h6> Appointment Date: " . $issue['appDate'] . "</h6>";
+            echo "<h6> Appointment Time: " . $issue['appTime'] . "</h6>";
+            echo "<br><h3> CONFIRMED: " . $issue['Confirmed'] . "</h3>";
+            echo "</div>";
+        }
+    }
+
+    public function viewIssuesByClassification($classification)
+    {
+        $statement = $this->database->query('SELECT * FROM issues WHERE classification = :classification;');
+        $statement->bindParam(':classification', $classification, PDO::PARAM_STR, strlen($classification));
+        $statement->execute();
+        $issues = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($issues as $issue) {
+            echo "<div class=\"hero-card\">";
+            echo "<h3>Issue ID: " . $issue['issueID'] . "</h3>";
+            echo "<h6>Date: " . $issue['date'] . "</h6>";
+            echo "<h6>Hall Memeber ID number: " . $issue['HMemberIDnum'] . "</h6>";
+            echo "<h6>Classification: " . $issue['classification'] . "</h6>";
+            echo "<h6>Status: " . $issue['status'] . "</h6>";
+            echo "<h6>Description: " . $issue['description'] . "</h6>";
+            echo "<h6>Cluster name: " . $issue['cluster_name'] . "</h6>";
+            echo "<h6>Room number: " . $issue['room_num'] . "</h6>";
+            echo "<h6>Household: " . $issue['household'] . "</h6>";
+            echo "<h6> Appointment Date: " . $issue['appDate'] . "</h6>";
+            echo "<h6> Appointment Time: " . $issue['appTime'] . "</h6>";
+            echo "<br><h3> CONFIRMED: " . $issue['Confirmed'] . "</h3>";
+            echo "</div>";
+        }
+    }
+   	public function viewAllIssues(){
+                  $statement = $this->database->query('SELECT * FROM issues;');
+                $issues = $statement->fetchAll(PDO::FETCH_ASSOC);
+                echo "<section >";
+                foreach($issues as $issue){
+                    echo"<div  style=\"padding:10px;\">";
+                    echo "<div class=\"card\" style=\"width: 100%; height:30rem; padding:30px; \">";
+                    echo "<div class=\"card-body\" style=\"padding:60px; box-shadow: 0 4px 8px 0 rgb(0, 89, 255);\">";
+                    echo "<h3 class=\"card-title\">Issue ID: ". $issue['issueID'] ."</h3>";
+                    echo "<h6 class=\"card-text\">Date: ". $issue['date'] ."</h6>";
+                    echo "<h6 class=\"card-text\">Hall Memeber ID number: ". $issue['HMemberIDnum'] ."</h6>";
+                    echo "<h6 class=\"card-text\">Classification: ". $issue['classification'] ."</h6>";
+                    echo "<h6 class=\"card-text\">Status: ". $issue['status'] ."</h6>";
+                    echo "<h6 class=\"card-text\">Description: ". $issue['description'] ."</h6>";
+                    echo "<h6 class=\"card-text\">Cluster name: ". $issue['cluster_name'] ."</h6>";
+                    echo "<h6 class=\"card-text\">Room number: ". $issue['room_num'] ."</h6>";
+                    echo "<h6 class=\"card-text\">Household: ". $issue['household'] ."</h6>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "</div>";
+            }
+
+                echo "</section>";
+    }
+
 }
 
-class Feedback {
+class Feedback
+{
     private $feedbackID;
     private $date;
     private $issueID;
@@ -504,71 +659,86 @@ class Feedback {
     private $read;
     private $sender;
 
-    public function __construct($comment, $issueID){
+    public function __construct($comment, $issueID)
+    {
         $this->comment = $comment;
         $this->issueID = $issueID;
         $this->read = FALSE;
         $this->date = date("m d Y"); #in format "m d Y", ie: "11 24 2019"
     }
 
-    public function getFeedbackID(){
+    public function getFeedbackID()
+    {
         return $this->feedbackID;
     }
 
-    public function getSender(){
+    public function getSender()
+    {
         return $this->sender;
     }
 
-    public function setDate($date){
+    public function setDate($date)
+    {
         $this->date = $date;
     }
 
-    public function setFeedbackID($feedbackID){
+    public function setFeedbackID($feedbackID)
+    {
         $this->feedbackID = $feedbackID;
     }
 
-    public function setSender($sender){
+    public function setSender($sender)
+    {
         $this->sender = $sender;
     }
 
-    public function setRead($read){
+    public function setRead($read)
+    {
         $this->read = $read;
     }
 
-    public function getDate(){
+    public function getDate()
+    {
         return $this->date;
     }
 
-    public function getIssueID(){
+    public function getIssueID()
+    {
         return $this->issueID;
     }
 
-    public function markAsRead(){
+    public function markAsRead()
+    {
         $this->read = !$this->read;
     }
 
-    public function isRead(){
-        $r = ($this->read === 1)?  TRUE: FALSE;
+    public function isRead()
+    {
+        $r = ($this->read === 1) ?  TRUE : FALSE;
         return $r;
     }
 
-    public function getComment(){
+    public function getComment()
+    {
         return $this->comment;
     }
 }
 
-class FeedbackController {
+class FeedbackController
+{
     private $database;
     private $raw_database;
     private $feedback;
 
-    public function __construct($database){
+    public function __construct($database)
+    {
         $this->database = $database->dataBank();
         $this->raw_database = $database;
         $this->feedback = [];
     }
 
-    public function addFeedback($issueID, $comment, $HMemberIDnum){
+    public function addFeedback($issueID, $comment, $HMemberIDnum)
+    {
         $statement = $this->database->prepare('INSERT INTO feedback (issueID) VALUES (:issueID);');
         $statement->bindParam(':issueID', $issueID, PDO::PARAM_INT);
         $statement->execute();
@@ -579,7 +749,7 @@ class FeedbackController {
 
         $feedback_id = 0;
 
-        foreach($feedback as $f){
+        foreach ($feedback as $f) {
             $feedback_id = $f['feedbackID'];
         }
 
@@ -591,15 +761,15 @@ class FeedbackController {
 
         $feedback_sender = "NOT FOUND";
 
-        try{
+        try {
             $PHallMember = new ResidentController($this->raw_database);
-            if($PHallMember->getResident($HMemberIDnum)=== NULL){
+            if ($PHallMember->getResident($HMemberIDnum) === NULL) {
                 throw new Exception("Not a resident");
             } else {
                 $PHallMember = $PHallMember->getResident($HMemberIDnum);
                 $feedback_sender = $PHallMember->getIDnum();
             }
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             $PHallMember = new AdminController($this->raw_database);
             $PHallMember = $PHallMember->getAdmin($HMemberIDnum);
             $feedback_sender = $PHallMember->getFullName();
@@ -619,15 +789,14 @@ class FeedbackController {
         echo "<script> alert('Feedback saved!');</script>";
     }
 
-    public function loadFeedbackFromIssue($issueID){
+    public function loadFeedbackFromIssue($issueID)
+    {
         $issueID = filter_var($issueID, FILTER_SANITIZE_NUMBER_INT);
 
-        $statement = $this->database->query('SELECT feedback_date.date AS date, feedback_comments.comment AS comment,
-                    feedback_comments.sender AS sender, feedback_comments.isRead AS isRead, feedback_comments.feedbackID AS feedbackID
-                    FROM feedback_date JOIN feedback_comments ON (feedback_date.feedbackID = feedback_comments.feedbackID AND feedback_comments.issueID = ' . $issueID . ')');
+        $statement = $this->database->query('SELECT feedback_date.date AS date, feedback_comments.comment AS comment, feedback_comments.sender AS sender, feedback_comments.isRead AS isRead, feedback_comments.feedbackID AS feedbackID FROM feedback_date JOIN feedback_comments ON (feedback_date.feedbackID = feedback_comments.feedbackID AND feedback_comments.issueID = ' . $issueID . ')');
         $feedbacks = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        foreach($feedbacks as $f){
+        foreach ($feedbacks as $f) {
             $feedbackObj = new Feedback($f['comment'], $issueID);
             $feedbackObj->setDate($f['date']);
             $feedbackObj->setFeedbackID($f['feedbackID']);
@@ -638,92 +807,108 @@ class FeedbackController {
         }
     }
 
-    public function sendFeedback(){
+    public function sendFeedback()
+    {
         return $this->feedback;
     }
 
-    public function clearFeedback(){
+    public function clearFeedback()
+    {
         $this->feedback = [];
     }
 }
 
-class Slot {
+class Slot
+{
     private $slotID;
     private $date;
     private $startTime;
     private $endTime;
     private $residentID;
 
-    public function getSlotID(){
+    public function getSlotID()
+    {
         return $this->slotID;
     }
 
-    public function getDate(){
+    public function getDate()
+    {
         return $this->date;
     }
 
-    public function getStart(){
+    public function getStart()
+    {
         return $this->startTime;
     }
 
-    public function getEnd(){
+    public function getEnd()
+    {
         return $this->endTime;
     }
 
-    public function setSlotID($slotID){
+    public function setSlotID($slotID)
+    {
         $this->slotID = $slotID;
     }
 
-    public function setStart($time){
+    public function setStart($time)
+    {
         $this->$startTime = $time;
     }
 
-    public function setEnd($time){
+    public function setEnd($time)
+    {
         $this->$endTime = $time;
     }
 
-    public function setDate($date){
+    public function setDate($date)
+    {
         $this->$date = $date;
     }
 
-    public function setResidentID($id){
+    public function setResidentID($id)
+    {
         $this->$residentID = $id;
     }
 
-    public function getResidentID(){
+    public function getResidentID()
+    {
         return $this->$residentID;
     }
-
 }
 
-class Machine{
+class Machine
+{
     private $machineID;
     private $machineType;
     public $schedule;
 
-    public function getMachineID(){
+    public function getMachineID()
+    {
         return $this->$machineID;
     }
 
-    public function getType(){
+    public function getType()
+    {
         return $this->$machineType;
     }
 
-    public function scheduleSlot(){
-
+    public function scheduleSlot()
+    {
     }
 
-    public function setMachineID($id){
+    public function setMachineID($id)
+    {
         $this->$machineID = $id;
     }
 
-    public function liberateSlot($date, $residentID){
-
+    public function liberateSlot($date, $residentID)
+    {
     }
-
 }
 
-class Report {
+class Report
+{
     private $startDate;
     private $endDate;
     private $issues;
@@ -732,34 +917,35 @@ class Report {
     private $feedback_list;
     private $maintenance_schedule; //not finished :MaintenanceScheduler
 
-    public function viewStartDate(){
+    public function viewStartDate()
+    {
         return $startDate;
     }
 
-    public function viewEndDate(){
+    public function viewEndDate()
+    {
         return $startDate;
     }
 
-    public function issuesAndFeedback(){
+    public function issuesAndFeedback()
+    {
 
-       /* while (count($array2) < 10 ) {
+        /* while (count($array2) < 10 ) {
             $array2[] = '$issues' . '$feedback_list' . '\n';
         }*/
-
     }
 
-    public function issuesAndCluster(){
-
+    public function issuesAndCluster()
+    {
     }
 
-    public function issuesAndMSchedule(){
-
+    public function issuesAndMSchedule()
+    {
     }
 
-    public function feedbackAndResidents(){
-
+    public function feedbackAndResidents()
+    {
     }
-
 }
 
 
@@ -769,7 +955,7 @@ $data_store = '';
 try {
     $data_store = new DataManager('localhost:3306', 'root', '', 'azprestonhall');
     #$data_store = new DataManager(getenv('IP'), 'cargill', 'qw$:8Kz%', 'azprestonhall');
-} catch(Exception $e) {
+} catch (Exception $e) {
     die($e->getMessage());
     echo "<script> alert('Cannot connect to database');</script>";
 }
@@ -814,7 +1000,6 @@ try {
 
 
 /*$test3 = new Login($data_store);
-
 $test3->signIN('62011767', 'passwor');*/
 
 #$resident_controller->addResident('620125555', 'Shamrock', 'D', '50D4'); #THIS WORKS
@@ -834,7 +1019,6 @@ $test3->signIN('62011767', 'passwor');*/
 /*$data_store = $data_store->dataBank();
 $statement = $data_store->query('SELECT * FROM resident');
 $residents = $statement->fetchAll(PDO::FETCH_ASSOC);
-
 foreach($residents as $person){
     echo $person['IDnum'] . '\n';
 }*/
@@ -862,7 +1046,6 @@ $issues = $viewIssues->viewIssuesByHallMemberID('620117676');
           </div>
         </div> <!---->
       <?php endforeach; ?>
-
 <php
 */
 

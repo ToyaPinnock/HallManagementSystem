@@ -56,7 +56,7 @@ if($_SESSION['isLogged'] === FALSE){
                 <div class="text-center">
                 <h1 class="card-title">AZ Preston Hall Maintenance System</h1>
 
-                <h2 class="card-subtitle mb-2 text-muted">Scheduele Washroom Time</h2>
+                <h2 class="card-subtitle mb-2 text-muted">Schedule Washroom Time</h2>
                 <br>
                 <p class="card-text" style="font-size:30px; font-style:italic;">*Washroom is open from 6:00am to 12:00am <br>
                 *Times are to be schedule in that period<br>

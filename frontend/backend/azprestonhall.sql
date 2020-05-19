@@ -135,6 +135,8 @@ CREATE TABLE `issues` (
   `cluster_name` varchar(20) NOT NULL DEFAULT 'The Hall',
   `room_num` varchar(4) DEFAULT NULL,
   `household` varchar(1) DEFAULT NULL,
+
+
   PRIMARY KEY (`issueID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;

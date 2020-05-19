@@ -104,7 +104,7 @@ if($_SESSION['isLogged'] === FALSE){
                 <img src="https://media.origaudiopromo.com/EPOIVw-UfdyO1LA/w:300/h:219/q:75/https://origaudiopromo.com/wp-content/uploads/2019/07/space-background-website.jpeg" class="card-img-top" alt="...">
             <div class="card-body">
                 <a href="view-feedback.html">
-                    <h3 class="card-text">View  <br>Feedback</h3>
+                    <h3 class="card-text">View <br>Feedback</h3>
                 </a>
             </div>
             </div>
@@ -113,7 +113,7 @@ if($_SESSION['isLogged'] === FALSE){
             <div class="card" style="width: 18rem;">
                 <img src="https://media.origaudiopromo.com/EPOIVw-UfdyO1LA/w:300/h:219/q:75/https://origaudiopromo.com/wp-content/uploads/2019/07/space-background-website.jpeg" class="card-img-top" alt="...">
             <div class="card-body">
-                <a href="">
+                <a href="book-personnel.php">
                     <h3 class="card-text">Schedule<br> Maintenance</h3>
                 </a>
             </div>

@@ -8,7 +8,7 @@ if ($_SESSION['isLogged'] === FALSE) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_POST['issueID']) && !empty($_POST['appDate']) && !empty($_POST['appTime'])) {
         $update_stat = new IssueController($data_store);
-        $update_stat->BookAppointment($_POST['issueID'], $_POST['appDate'], $_POST['appTime']);
+        $update_stat->bookAppointment($_POST['issueID'], $_POST['appDate'], $_POST['appTime']);
     }
 }
 ?>
